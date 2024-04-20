@@ -1,0 +1,21 @@
+<form id="myForm" action="user" method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    <input type="file" id="fileInput" accept="images/*">
+    <img id="previewImage" src="#" alt="Preview" style="display:none; max-width: 1000px; max-height: 100px;">
+    <input type="submit" value="Submit">
+</form>
+
+<script>
+    document.getElementById('fileInput').addEventListener('change', function(event) {
+        var file = event.target.files[0];
+        var reader = new FileReader();
+        
+        reader.onload = function(e) {
+            document.getElementById('previewImage') .src = e.target.result;
+            localStorage.setItem('key', e.target.result);
+            document.getElementById('previewImage').style.display = 'block';
+        }
+        
+        reader.readAsDataURL(file);
+    });
+</script>
