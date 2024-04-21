@@ -1,4 +1,4 @@
-<h1>Hello Arya</h1>
+{% comment %} <h1>Hello Arya</h1>
 <img id="temp-id" src="#"  />
 
 <script>
@@ -8,4 +8,104 @@
     document.getElementById('temp-id').src = value;
     document.getElementById('temp-id').style.width="300px"
     document.getElementById('temp-id').style.height="300px"
+</script> {% endcomment %}
+
+{% comment %} <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Display Image</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        img {
+            max-width: 80%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        p {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+    </style>
+</head>
+<body>
+    <h2>Displayed Image</h2>
+    {% if image_url %}
+        <img id="temp-id" src="{{ image_url }}" alt="Uploaded Image" >
+        <img id="temp-id" src="{{ image_url }}" alt="Uploaded Image" >
+    {% else %}
+        <p>No image found. Please upload an image.</p>
+    {% endif %}
+</body>
+<script>
+   
+    document.getElementById('temp-id').style.width="500px"
+    document.getElementById('temp-id').style.height="300px"
 </script>
+</html> {% endcomment %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Compare Images</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            background-color: #f4f4f4;
+        }
+        .image-container {
+            display: flex;
+            width: 80%;
+            justify-content: space-around;
+            align-items: center;
+            border: 1px solid #ccc;
+            background: white;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+        .image-container img {
+            width: 100%;
+            transition: transform 0.5s ease;
+            margin: 0 10px;
+            max-width: 45%; /* Limits maximum width, ensuring container spacing */
+        }
+        /* Apply transform only to the image that is being hovered over */
+        .image-container img:hover {
+            transform: scale(1.5);
+            cursor: pointer;
+        }
+        p {
+            color: #333;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <div class="image-container">
+        {% if image_url %}
+            <img src="{{ image_url }}" alt="Uploaded Image">
+            <img src="{{ image_url }}" alt="Uploaded Image">
+        {% else %}
+            <p>No image found. Please upload an image.</p>
+        {% endif %}
+    </div>
+</body>
+</html>
+
